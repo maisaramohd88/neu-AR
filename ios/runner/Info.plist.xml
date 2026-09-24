@@ -1,8 +1,0 @@
-<plist version="1.0">
-<dict>
-    <!-- PASTE THE KEY AND STRING HERE -->
-    <key>NSCameraUsageDescription</key>
-    <string>TalentSpectrum requires camera access to track your physical therapeutic artwork for sensory grounding.</string>
-    
-    <key>CFBundleDevelopmentRegion</key>
-    <string>$(DEVELOPMENT_LANGUAGE)</string>
