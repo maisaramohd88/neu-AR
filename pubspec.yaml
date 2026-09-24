@@ -1,0 +1,4 @@
+dependencies:
+  flutter:
+    sdk: flutter
+  webview_flutter: ^4.10.0 # Standard, high-performance webview layer

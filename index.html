@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalentSpectrum WebAR Module</title>
+    
+    <!-- Core WebAR Libraries (No installation required) -->
+    <script src="https://aframe.io"></script>
+    <script src="https://jsdelivr.net"></script>
+
+    <style>
+        /* Muted, low-contrast interface overlay styles for neuro-comfort */
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        
+        #ui-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            background: rgba(15, 23, 42, 0.85); /* Deep space indigo */
+            color: #e2e8f0;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid #38bdf8;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            pointer-events: none;
+        }
+        h2 { font-size: 16px; margin: 0 0 5px 0; color: #38bdf8; letter-spacing: 1px; }
+        p { font-size: 13px; margin: 0; color: #cbd5e1; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. The Real-Time System Status Display -->
+    <div id="ui-overlay">
+        <h2>SENSORY GROUNDING ACTIVE</h2>
+        <p id="status-text">Scanning desk space for your hand-drawn moon marker...</p>
+    </div>
+
+    <!-- 2. The WebAR Scene Infrastructure -->
+    <!-- Points directly to your compiled tracking asset data file -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; filterMinCF:0.001; filterBeta:10" 
+             color-space="sRGB" 
+             renderer="colorManagement: true, physicallyCorrectLights" 
+             vr-mode-ui="enabled: false" 
+             device-orientation-permission-ui="enabled: false">
+        
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+        <!-- 3. The Interactive Anchor Loop -->
+        <!-- targetIndex: 0 flags your first compiled sketch configuration -->
+        
+            
+            <!-- Custom Calming Lunar Component Overlay -->
+            <!-- Pulls your hand-drawn asset smoothly over the physical paper plane -->
+            <a-image id="lunar-mesh" 
+                     src="./moon-overlay.png" 
+                     position="0 0 0" 
+                     height="1" 
+                     width="1" 
+                     rotation="0 0 0"
+                     animation="property: scale; to: 1.05 1.05 1.05; dir: alternate; dur: 4000; loop: true; easing: easeInOutSine">
+            </a-image>
+
+        
+    </a-scene>
+
+    <!-- 4. Logic Event Listeners for Your Thesis Documentation -->
+    <script>
+        const targetEntity = document.querySelector('#moon-target');
+        const statusText = document.querySelector('#status-text');
+
+        // Triggered the exact millisecond your code tracks the physical sketch
+        targetEntity.addEventListener("targetFound", event => {
+            statusText.innerText = "Target Locked. Trace the crater rings to regulate focus.";
+            statusText.style.color = "#4ade80"; // Muted grounding green
+        });
+
+        // Triggered if the neurodivergent user breaks tracking or shifts away
+        targetEntity.addEventListener("targetLost", event => {
+            statusText.innerText = "Scanning desk space for your hand-drawn moon marker...";
+            statusText.style.color = "#cbd5e1";
+        });
+    </script>
+</body>
+</html>
